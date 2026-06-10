@@ -1,4 +1,7 @@
-name: CD Pipeline
+cd ~/2212186-devops-project
+  git pull origin main
+  docker-compose -f docker-compose.prod.yml down
+  docker-compose -f docker-compose.prod.yml up --build -dname: CD Pipeline
 
 on:
   push:
