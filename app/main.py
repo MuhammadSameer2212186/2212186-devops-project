@@ -8,14 +8,17 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+
 class StudentCreate(BaseModel):
     reg_no: str
     name: str
     email: str
 
+
 @app.get("/health")
 def health_check():
     return {"status": "ok", "db": "connected", "student": "2212186"}
+
 
 @app.post("/students")
 def create_student(student: StudentCreate, db: Session = Depends(get_db)):
@@ -25,9 +28,11 @@ def create_student(student: StudentCreate, db: Session = Depends(get_db)):
     db.refresh(db_student)
     return db_student
 
+
 @app.get("/students")
 def get_students(db: Session = Depends(get_db)):
     return db.query(models.Student).all()
+
 
 @app.get("/students/{reg_no}")
 def get_student(reg_no: str, db: Session = Depends(get_db)):
