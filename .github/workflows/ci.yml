@@ -5,6 +5,8 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -12,4 +14,4 @@ jobs:
           python-version: "3.11"
       - run: pip install -r requirements.txt
       - run: flake8 app/ --max-line-length=120
-      - run: pytest app/tests/
+      - run: pytest app/tests/ -v
