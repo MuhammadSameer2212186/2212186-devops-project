@@ -1,11 +1,9 @@
-cd ~/2212186-devops-project
-  git pull origin main
-  docker-compose -f docker-compose.prod.yml down
-  docker-compose -f docker-compose.prod.yml up --build -dname: CD Pipeline
+name: CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -20,5 +18,5 @@ jobs:
           script: |
             cd ~/2212186-devops-project
             git pull origin main
-            docker compose -f docker-compose.prod.yml down
-            docker compose -f docker-compose.prod.yml up --build -d
+            docker-compose -f docker-compose.prod.yml down
+            docker-compose -f docker-compose.prod.yml up --build -d
