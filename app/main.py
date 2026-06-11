@@ -4,9 +4,12 @@ from pydantic import BaseModel
 from app import models
 from app.database import engine, get_db, Base
 
-Base.metadata.create_all(bind=engine)
-
 app = FastAPI()
+
+
+@app.on_event("startup")
+def startup():
+    Base.metadata.create_all(bind=engine)
 
 
 class StudentCreate(BaseModel):
