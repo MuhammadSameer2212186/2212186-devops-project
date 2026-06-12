@@ -1,8 +1,8 @@
 # 2212186-devops-project
 
-**Student:** Muhammad Sameer  
-**Registration Number:** 2212186  
-**Supervisor:** Sir Afaq Ahmed  
+**Student:** Muhammad Sameer
+**Registration Number:** 2212186
+**Supervisor:** Sir Afaq Ahmed
 
 ## Live URL
 http://100.26.137.51:8000
@@ -34,6 +34,11 @@ http://100.26.137.51:8000
    http://localhost:8000/health
 
 ### Run on EC2
-1. SSH into server
-2. Run: docker-compose -f docker-compose.prod.yml up --build -d
-3. Open: http://100.26.137.51:8000/health
+1. SSH into server:
+   ssh -i your-key.pem ubuntu@100.26.137.51
+2. Go to project folder:
+   cd ~/2212186-devops-project
+3. Start containers:
+   docker-compose -f docker-compose.prod.yml up --build -d
+4. Open browser:
+   http://100.26.137.51:8000/health
